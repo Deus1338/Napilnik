@@ -17,9 +17,7 @@ namespace Napilnik1
         public void OnSeePlayer(Player player)
         {
             if (!player.IsDead)
-            {
                 weapon.TryFire(player);
-            }
         }
     }
 }
