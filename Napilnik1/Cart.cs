@@ -11,13 +11,17 @@
 
         public void Add(Good good, int count)
         {
-            warehouse.TryRemoveGood(good, count);
-            AddGood(good, count);
+            if(warehouse.HasEnough(good, count))
+                AddGood(good, count);
         }
 
         public Order Order()
         {
+            foreach(Cell cell in Cells)
+                warehouse.TryRemoveGood(cell.Good, cell.Count);
+
             return new Order();
+
         }
     }
 }

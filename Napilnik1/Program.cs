@@ -16,18 +16,20 @@ namespace Napilnik1
             warehouse.Ship(cup, 100);
             warehouse.Ship(plate, 1);
 
-            warehouse.DisplayContentInfo();
+            CellsInfoDisplayer.ShowContentInfo(warehouse);
 
             Cart cart = shop.CreateCart();
 
             cart.Add(cup, 4);
             cart.Add(plate, 1);
 
-            cart.DisplayContentInfo();
-
-            warehouse.DisplayContentInfo();
+            
 
             Console.WriteLine(cart.Order().Paylink);
+
+            CellsInfoDisplayer.ShowContentInfo(cart);
+            CellsInfoDisplayer.ShowContentInfo(warehouse);
+
             Console.ReadLine();
         }
     }

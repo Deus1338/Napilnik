@@ -61,7 +61,7 @@ namespace Napilnik1
             return index != -1;
         }
 
-        private bool HasEnough(Good good, int count)
+        public bool HasEnough(Good good, int count)
         {
             if (!Has(good, out int goodIndex))
                 return false;
@@ -70,15 +70,6 @@ namespace Napilnik1
                 return true;
 
             return false;
-        }
-
-        public void DisplayContentInfo()
-        {
-            Console.Write("\n");
-            foreach(Cell cell in Cells)
-            {
-                Console.WriteLine(cell.Info);
-            }
         }
     }
 }
