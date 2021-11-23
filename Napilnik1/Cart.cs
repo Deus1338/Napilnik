@@ -1,4 +1,6 @@
-﻿namespace Napilnik1
+﻿using System;
+
+namespace Napilnik1
 {
     public class Cart : CellsSet
     {
@@ -11,8 +13,10 @@
 
         public void Add(Good good, int count)
         {
-            if(warehouse.HasEnough(good, count))
+            if (warehouse.HasEnough(good, count))
                 AddGood(good, count);
+            else
+                throw new InvalidOperationException();
         }
 
         public Order Order()

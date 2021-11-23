@@ -4,6 +4,11 @@ namespace Napilnik1
 {
     public class Order
     {
-        public string Paylink => Guid.NewGuid().ToString();
+        public string Paylink { get; }
+
+        public Order()
+        {
+            Paylink = Guid.NewGuid().ToString();
+        }
     }
 }

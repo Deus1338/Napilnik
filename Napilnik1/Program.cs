@@ -30,6 +30,7 @@ namespace Napilnik1
             ShowContentInfo(cart);
             ShowContentInfo(warehouse);
 
+            cart.Add(plate, 1);
             Console.ReadLine();
         }
 
