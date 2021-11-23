@@ -19,11 +19,11 @@ namespace Napilnik1
             this.bullets = bullets;
         }
 
-        private bool CanShoot => bullets > 0;
+        private bool CanFire => bullets > 0;
 
         public void TryFire(Player player)
         {
-            if (!CanShoot)
+            if (!CanFire)
                 throw new InvalidOperationException(nameof(bullets));
 
             Fire(player);
@@ -34,7 +34,6 @@ namespace Napilnik1
             bullets = Math.Max(0, bullets - 1);
             Console.WriteLine(bullets);
             player.TryTakeDamage(damage);
-            
         }
     }
 }

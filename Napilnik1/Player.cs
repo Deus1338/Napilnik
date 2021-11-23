@@ -5,7 +5,6 @@ namespace Napilnik1
     class Player
     {
         private int health;
-        public event Action Death;
 
         public Player(int health)
         {
@@ -31,9 +30,6 @@ namespace Napilnik1
         private void TakeDamage(int damage)
         {
             health = Math.Max(0, health - damage);
-
-            if (IsDead)
-                Death?.Invoke();
         }
     }
 }
