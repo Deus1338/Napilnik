@@ -16,7 +16,7 @@ namespace Napilnik1
             warehouse.Ship(cup, 100);
             warehouse.Ship(plate, 1);
 
-            CellsInfoDisplayer.ShowContentInfo(warehouse);
+            ShowContentInfo(warehouse);
 
             Cart cart = shop.CreateCart();
 
@@ -27,10 +27,19 @@ namespace Napilnik1
 
             Console.WriteLine(cart.Order().Paylink);
 
-            CellsInfoDisplayer.ShowContentInfo(cart);
-            CellsInfoDisplayer.ShowContentInfo(warehouse);
+            ShowContentInfo(cart);
+            ShowContentInfo(warehouse);
 
             Console.ReadLine();
+        }
+
+        public static void ShowContentInfo(CellsSet set)
+        {
+            Console.Write("\n");
+            foreach (Cell cell in set.Cells)
+            {
+                Console.WriteLine(cell.Info);
+            }
         }
     }
 }
