@@ -14,10 +14,9 @@ namespace Napilnik1
             this.weapon = weapon;
         }
 
-        public void OnSeePlayer(Player player)
+        public void OnSeeTarget(IDamagable target)
         {
-            if (!player.IsDead)
-                weapon.TryFire(player);
+                weapon.TryFire(target);
         }
     }
 }

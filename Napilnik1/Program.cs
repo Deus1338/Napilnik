@@ -11,11 +11,9 @@ namespace Napilnik1
             var botWeapon = new Weapon(10, 100);
             var bot = new Bot(botWeapon);
 
-            player.Death += () => Console.WriteLine("Game over!");
-
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 10; i++)
             {
-                bot.OnSeePlayer(player);
+                bot.OnSeeTarget(player);
                 await Task.Delay(100);
             }
         }

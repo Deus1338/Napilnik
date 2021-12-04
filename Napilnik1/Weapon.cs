@@ -21,19 +21,21 @@ namespace Napilnik1
 
         private bool CanFire => bullets > 0;
 
-        public void TryFire(Player player)
+        public void TryFire(IDamagable target)
         {
             if (!CanFire)
                 throw new InvalidOperationException(nameof(bullets));
+            if(target.IsDead)
+                throw new InvalidOperationException(nameof(Player));
 
-            Fire(player);
+            Fire(target);
         }
 
-        private void Fire(Player player)
+        private void Fire(IDamagable target)
         {
             bullets = Math.Max(0, bullets - 1);
-            Console.WriteLine(bullets);
-            player.TryTakeDamage(damage);
+            
+            target.TakeDamage(damage);
         }
     }
 }

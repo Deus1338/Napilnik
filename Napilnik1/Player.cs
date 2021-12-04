@@ -2,7 +2,7 @@
 
 namespace Napilnik1
 {
-    class Player
+    class Player : IDamagable
     {
         private int health;
 
@@ -16,20 +16,18 @@ namespace Napilnik1
 
         public bool IsDead => health == 0;
 
-        public void TryTakeDamage(int damage)
+        public void TakeDamage(int damage)
         {
-            if (IsDead)
-                throw new InvalidOperationException(nameof(IsDead));
-
             if (damage <= 0)
                 throw new ArgumentOutOfRangeException(nameof(damage));
 
-            TakeDamage(damage);
-        }
-
-        private void TakeDamage(int damage)
-        {
             health = Math.Max(0, health - damage);
         }
+    }
+
+    public interface IDamagable
+    {
+        bool IsDead { get; }
+        void TakeDamage(int damage);
     }
 }
