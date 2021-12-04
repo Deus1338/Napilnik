@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Napilnik1
 {
-    public abstract class CellsSet
+    public abstract class Storage
     {
         private readonly List<Cell> cells;
 
-        public CellsSet()
+        public Storage()
         {
             cells = new List<Cell>();
         }
@@ -33,17 +33,18 @@ namespace Napilnik1
             Add(new Cell(good, count));
         }
 
-        public void TryRemoveGood(Good good, int count)
+        public bool TryRemoveGood(Good good, int count)
         {
             if (!Has(good, out int index) || count <= 0)
-                throw new InvalidOperationException();
+                return false;
 
             Cell existedCell = cells[index];
 
             if (!HasEnough(good, count))
-                throw new ArgumentOutOfRangeException(nameof(count));
+                return false;
 
             RemoveGood(count, existedCell);
+            return true;
         }
 
         private void RemoveGood(int count, Cell existedCell)

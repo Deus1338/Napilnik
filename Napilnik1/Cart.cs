@@ -2,7 +2,7 @@
 
 namespace Napilnik1
 {
-    public class Cart : CellsSet
+    public class Cart : Storage
     {
         private readonly Warehouse warehouse;
 
@@ -13,16 +13,19 @@ namespace Napilnik1
 
         public void Add(Good good, int count)
         {
-            if (warehouse.HasEnough(good, count))
-                AddGood(good, count);
-            else
+            if (!warehouse.HasEnough(good, count))
                 throw new InvalidOperationException();
+
+            AddGood(good, count);                
         }
 
         public Order Order()
         {
             foreach(Cell cell in Cells)
-                warehouse.TryRemoveGood(cell.Good, cell.Count);
+            {
+                if (!warehouse.TryRemoveGood(cell.Good, cell.Count))
+                    throw new InvalidCastException(nameof(cell));
+            } 
 
             return new Order();
 

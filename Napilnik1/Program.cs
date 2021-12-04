@@ -34,7 +34,7 @@ namespace Napilnik1
             Console.ReadLine();
         }
 
-        public static void ShowContentInfo(CellsSet set)
+        public static void ShowContentInfo(Storage set)
         {
             Console.Write("\n");
             foreach (Cell cell in set.Cells)

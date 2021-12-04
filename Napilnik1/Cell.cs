@@ -2,7 +2,7 @@
 
 namespace Napilnik1
 {
-    public class Cell: IReadOnlyCell
+    public class Cell : IReadOnlyCell
     {
         public Cell(Good good, int count)
         {
@@ -14,11 +14,11 @@ namespace Napilnik1
 
         public int Count { get; set; }
 
-        public string Info => $"{Good.Name} : {Count}";
+        public string Info => $"{Good.Name} : {Count.ToString()}";
 
         public void Merge(Cell newCell)
         {
-            if(!newCell.Good.Equals(Good))
+            if(newCell.Good != Good)
                 throw new InvalidOperationException();
 
             Count += newCell.Count;
