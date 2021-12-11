@@ -2,14 +2,11 @@
 
 namespace Napilnik1
 {
-    public class Cart : Storage
+    public sealed class Cart : Storage
     {
         private readonly Warehouse warehouse;
 
-        public Cart(Warehouse warehouse)
-        {
-            this.warehouse = warehouse;
-        }
+        public Cart(Warehouse warehouse) => this.warehouse = warehouse;
 
         public void Add(Good good, int count)
         {
@@ -21,14 +18,13 @@ namespace Napilnik1
 
         public Order Order()
         {
-            foreach(Cell cell in Cells)
+            foreach(var pair in Goods)
             {
-                if (!warehouse.TryRemoveGood(cell.Good, cell.Count))
-                    throw new InvalidCastException(nameof(cell));
+                if (!warehouse.TryRemoveGood(pair.Key, pair.Value))
+                    throw new InvalidOperationException();
             } 
 
             return new Order();
-
         }
     }
 }

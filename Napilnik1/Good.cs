@@ -1,11 +1,8 @@
 ﻿namespace Napilnik1
 {
-    public class Good
+    public sealed class Good
     {
-        public Good(string name)
-        {
-            Name = name;
-        }
+        public Good(string name) => Name = name;
 
         public string Name { get; }
     }

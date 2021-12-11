@@ -31,16 +31,16 @@ namespace Napilnik1
             ShowContentInfo(warehouse);
 
             cart.Add(plate, 1);
+
             Console.ReadLine();
         }
 
-        public static void ShowContentInfo(Storage set)
+        public static void ShowContentInfo(Storage storage)
         {
-            Console.Write("\n");
-            foreach (Cell cell in set.Cells)
-            {
-                Console.WriteLine(cell.Info);
-            }
+            
+            Console.Write($"\n{ storage.GetType().Name.ToString()} content:\n");
+            foreach (var pair in storage.Goods)
+                Console.WriteLine($"{pair.Key.Name} : {pair.Value}");
         }
     }
 }
